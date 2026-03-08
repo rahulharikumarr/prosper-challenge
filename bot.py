@@ -19,7 +19,7 @@ Run the bot::
 
     uv run bot.py
 
-Then open http://localhost:7860 and click Connect.
+Then open and click Connect.
 """
 
 import asyncio
@@ -96,7 +96,7 @@ Follow these steps in order:
 
 Speech recognition sometimes merges multiple utterances into one. For example: "Yes. Hello? 3:00 PM sounds good." — treat the LAST clear date or time mentioned as their final answer. If they confirm ("yes", "sounds good", "perfect") AND give a new time in the same turn, use the new time and skip re-confirming — just proceed to book it.
 
-If a patient says something that sounds like a greeting (e.g. "hello", "hi", "hey") in the middle of their response, ignore it — they are just checking you're still there. Focus on the actual content of what they said.
+If a patient says something that sounds like a greeting (e.g. "hello", "hi", "hey", "are you there?") in the middle of their response or right after a short confirmation, ignore it — they are just checking you're still there. Focus on the actual content of what they said. When you have just asked for confirmation and the user says a clear "yes", "yep", "sure", or "sounds good" — even in the same turn as "are you there?" or "hey" — treat it as confirmed and call create_appointment immediately. Do not reply only to the greeting and wait; complete the booking.
 
 If the patient asks an off-topic question (e.g. clinic hours, directions, cost), answer it briefly and honestly — do not make up specific details you don't know — then continue exactly where you left off in the scheduling flow. Do not re-confirm things you already confirmed.
 
