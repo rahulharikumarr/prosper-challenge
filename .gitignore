@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+.healthie_session.json
 
 # Python
 __pycache__/
@@ -36,3 +37,7 @@ htmlcov/
 # Misc
 *.log
 .cache/
+
+# Local-only documentation (not pushed)
+SOLUTION.md
+CONSIDERATIONS.md

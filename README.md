@@ -1,5 +1,19 @@
 # Prosper Challenge
 
+> **Implementation note:** This fork contains a fully-working solution to the challenge below.
+> The bot collects patient name and date of birth, looks them up in Healthie via Playwright,
+> then books the requested appointment — all in a live phone-style voice conversation.
+>
+> Key additions on top of the starter template:
+> - Full scheduling conversation flow with LLM function calling (`find_patient`, `create_appointment`)
+> - Playwright automation for Healthie patient search and appointment creation
+> - Mid-call responsiveness: a side-channel responder answers questions while Playwright ops run
+> - VAD tuning + STT commit strategy to prevent false turn-ends and merged transcripts
+> - Session caching in `healthie.py` to avoid re-logging-in on every call
+> - Unit tests in `tests/` for time normalisation and date validation logic
+
+---
+
 This is a template repository for an AI voice agent that is able to schedule appointments for a health clinic. To do that the agent connects in real-time to the clinic's CRM system, which in the healthcare industry is known as an Electronic Health Record (EHR). The foundations are already set:
 
 - Pipecat is configured with sensible defaults and the bot already introduces itself when initialized
@@ -74,7 +88,11 @@ uv run bot.py
 
 > 💡 First run note: The initial startup may take ~20 seconds as Pipecat downloads required models and imports.
 
+### Running the Tests
 
+```bash
+uv run pytest tests/ -v
+```
 
 ## Expectations & Deliverables
 
