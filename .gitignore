@@ -39,5 +39,4 @@ htmlcov/
 .cache/
 
 # Local-only documentation (not pushed)
-SOLUTION.md
 CONSIDERATIONS.md
